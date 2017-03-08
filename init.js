@@ -1,6 +1,6 @@
 // Create game objects //
-var tiles = new Tiles();
-var answer = new Answer();
+var tiles = new Tiles('.container');
+var answer = new Answer('answer');
 
 // Create game buttons //
 var newgameButton = document.getElementById('newgame');
