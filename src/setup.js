@@ -1,10 +1,10 @@
 // Global Functions // 
-function randInt (min = 0, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min
+function randPosInt (max) {
+	return Math.floor(Math.random() * max)
 }
 
-function rgbGenerator (RNG = randInt) {
-	let [R, G, B] = [RNG(0,255), RNG(0,255), RNG(0,255)];
+function rgbGenerator (RNG = randPosInt) {
+	let [R, G, B] = [RNG(256), RNG(256), RNG(256)];
 	return `RGB(${R},${G},${B})`
 }
 
@@ -19,20 +19,20 @@ function makeClickEventById (ev, id) {
 
 // Class //
 const GuessRGB = (function () {
-    // Private Variables
+  // Private Variables
 	let current = 0;
 
 	let answer = document.querySelector('.answer');
 	let status = document.querySelector('.status');
 
 	let container = document.querySelector('.container');
-	const tilesArray = () => Array.from(container.children);
+	const tilesArray = () => Array.prototype.slice.call(container.children);
 
 	// Private Functions
 	function resetColor () {
 		let arr = tilesArray();
 		arr.forEach(tile => tile.style.backgroundColor = rgbGenerator());
-		return arr.map(tile => tile.style.backgroundColor)[randInt(0,current)]
+		return arr[randPosInt(current)].style.backgroundColor
 	}
 
 	function createEvent () {
@@ -59,8 +59,8 @@ const GuessRGB = (function () {
 		}
 	}
 
-    // Public scope
-	return class { 
+  // Public scope
+  return class { 
 		set difficulty (value) {
 			if (current === value) return
 			current = value;
