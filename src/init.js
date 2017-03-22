@@ -1,11 +1,23 @@
 // Create game objects //
 let game = new GuessRGB();
+let diffButtons = {};
 
 // create game buttons //
-makeClickEventById(() => game.reset(), 'newgame');
-makeClickEventById(() => game.difficulty = 3, 'mode-easy');
-makeClickEventById(() => game.difficulty = 6, 'mode-normal');
-makeClickEventById(() => game.difficulty = 9, 'mode-hard');
+document.getElementById('newgame')
+  .addEventListener('click',() => game.reset());
+
+diffButtons['easy'] = {obj: document.getElementById('mode-easy'), val: 3};
+diffButtons['normal'] = {obj: document.getElementById('mode-normal'), val: 6};
+
+for (let mode in diffButtons) {
+  diffButtons[mode].obj.addEventListener('click', function () {
+    game.difficulty = this.val;
+    this.obj.classList.add('selected-mode');
+    for (let me in diffButtons)
+      if (mode !== me)
+        diffButtons[me].obj.classList.remove('selected-mode');
+  }.bind(diffButtons[mode]));
+}
 
 // Initialize //
-document.getElementById('mode-easy').click();
+document.getElementById('mode-normal').click();

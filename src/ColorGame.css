@@ -1,30 +1,90 @@
-body, p {margin: 0;}
-
-body {
-	background: rgb(35,35,35);
-	overflow: hidden;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-.header {
-	background: rgb(71,130,180);
-	color: white;
-}
+body {background-color: RGB(35, 35, 35)}
 
-.menus {
-	background: white;
-	color: rgb(71,130,180);
-}
+/* HEADER */
+	.header {
+		background-color: RGB(70, 130, 180);
+		color: white;
+		padding: 1rem 0;
 
-.container {
-	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 40%;
-}
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.1rem;
 
-.color-box {
-	background: green;
-	width: 30%;
-	padding-bottom: 30%; /* ชักผ้าลงมา 30% */
-	margin: 1.66%;
-}
+		transition: background-color 0.5s;
+	}
+
+	.answer {
+		font-size: 2rem;
+	}
+
+/* MENU */
+	.menu {
+		background-color: white;
+
+		text-transform: uppercase;
+
+		display: flex;
+		justify-content: center;
+	}
+
+	.menu-item {
+		color: RGB(70, 130, 180);
+		width: 50%;
+
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.status {
+		color: black;
+		text-transform: none;
+	}
+
+	.mode {
+		display: inline-flex;
+		justify-content: space-around;
+	}
+
+	#mode-easy {padding: 0 5px}
+	#mode-normal {padding: 0 5px}
+
+	.button:hover {
+		background-color: RGB(70, 130, 180);
+		color: white;
+		transition: background-color 0.3s, color 0.3s;
+	}
+
+/* GAMESECTION */
+	.gamesection {
+		display: flex;
+		justify-content: center;
+		
+		margin: 10px;
+	}
+
+	.container {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		width: 50%;
+	}
+
+	.color-box {
+		width: 150px;
+		height: 150px;
+		margin: 10px;	
+		border-radius: 20px;
+		transition: background-color 0.5s;
+	}
+
+	.selected-mode {
+		background-color: RGB(70, 130, 180);
+		color: white;
+	}
